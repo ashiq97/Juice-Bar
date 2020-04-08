@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JuiceBar.Data.Interfaces;
+using JuiceBar.Data.mocks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +18,9 @@ namespace JuiceBar
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddTransient<Name of Interface,Name of that class which implement this interface>()
+            services.AddTransient<IDrinkRepository, MockDrinkRepository>();
+            services.AddTransient<ICategoryRepository, MockCategoryRepository>();
             services.AddControllersWithViews();
         }
 
