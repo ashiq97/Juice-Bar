@@ -32,8 +32,8 @@ namespace JuiceBar.Data.mocks
                         ImageUrl = "http://imgh.us/beerL_2.jpg",
                         InStock = true,
                         IsPreferredDrink = true,
-                        ImageThumbnailUrl = "http://imgh.us/beerS_1.jpeg"
-
+                      
+                        ImageThumbnailUrl="/images/carousel1.jpg"
                     },
                     new Drink
                     {
@@ -44,7 +44,7 @@ namespace JuiceBar.Data.mocks
                         ImageUrl = "http://imgh.us/rumCokeL.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/rumAndCokeS.jpg"
+                        ImageThumbnailUrl = "/images/carousel2.jpg"
                     },
                     new Drink {
                         Name = "Tequila ",
@@ -54,7 +54,7 @@ namespace JuiceBar.Data.mocks
                         ImageUrl = "http://imgh.us/tequilaL.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/tequilaS.jpg"
+                        ImageThumbnailUrl = "/images/carousel3.jpg"
                     },
                     new Drink
                     {
@@ -66,7 +66,7 @@ namespace JuiceBar.Data.mocks
                         ImageUrl = "http://imgh.us/juiceL.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "http://imgh.us/juiceS.jpg"
+                        ImageThumbnailUrl = "/images/carousel1.jpg"
                     }
                 };
             }
