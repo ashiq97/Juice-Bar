@@ -2,11 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JuiceBar.Data;
 using JuiceBar.Data.Interfaces;
 using JuiceBar.Data.mocks;
+using JuiceBar.Data.Models;
+using JuiceBar.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -16,16 +21,29 @@ namespace JuiceBar
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddTransient<Name of Interface,Name of that class which implement this interface>()
-            services.AddTransient<IDrinkRepository, MockDrinkRepository>();
-            services.AddTransient<ICategoryRepository, MockCategoryRepository>();
+
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<IDrinkRepository, DrinkRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+            //services.AddTransient<IDrinkRepository, MockDrinkRepository>();
+            //services.AddTransient<ICategoryRepository, MockCategoryRepository>();
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
 
             if (env.IsDevelopment())
@@ -41,7 +59,7 @@ namespace JuiceBar
 
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
@@ -53,6 +71,7 @@ namespace JuiceBar
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            DbInitializer.Seed(serviceProvider);
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapGet("/", async context =>

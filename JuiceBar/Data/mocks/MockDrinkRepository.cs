@@ -33,7 +33,7 @@ namespace JuiceBar.Data.mocks
                         InStock = true,
                         IsPreferredDrink = true,
                       
-                        ImageThumbnailUrl="/images/carousel1.jpg"
+                        ImageThumbnailUrl="/images/beer.jpg"
                     },
                     new Drink
                     {
@@ -44,7 +44,7 @@ namespace JuiceBar.Data.mocks
                         ImageUrl = "http://imgh.us/rumCokeL.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/images/carousel2.jpg"
+                        ImageThumbnailUrl = "/images/RamCoke.jpg"
                     },
                     new Drink {
                         Name = "Tequila ",
@@ -54,7 +54,7 @@ namespace JuiceBar.Data.mocks
                         ImageUrl = "http://imgh.us/tequilaL.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/images/carousel3.jpg"
+                        ImageThumbnailUrl = "/images/tequi.jpg"
                     },
                     new Drink
                     {
@@ -63,10 +63,10 @@ namespace JuiceBar.Data.mocks
                         ShortDescription = "Naturally contained in fruit or vegetable tissue.",
                         LongDescription = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
                         Category = _categoryRepository.Categories.Last(),
-                        ImageUrl = "http://imgh.us/juiceL.jpg",
+                        ImageUrl = "/images/juice-lg.jpg",
                         InStock = true,
                         IsPreferredDrink = false,
-                        ImageThumbnailUrl = "/images/carousel1.jpg"
+                        ImageThumbnailUrl = "/images/juice.jpg"
                     }
                 };
             }

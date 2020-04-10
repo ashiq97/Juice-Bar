@@ -25,7 +25,7 @@ namespace JuiceBar.Controllers
 
             DrinkListViewModel vm = new DrinkListViewModel();
             vm.Drinks = _drinkRepository.Drinks;
-            vm.CurrentCategory = "DrinkCategory";
+            vm.CurrentCategory = "Drink Category";
 
             return View(vm);
         }
