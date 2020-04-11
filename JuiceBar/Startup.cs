@@ -36,6 +36,7 @@ namespace JuiceBar
 
             services.AddTransient<IDrinkRepository, DrinkRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             //services.AddTransient<IDrinkRepository, MockDrinkRepository>();
             //services.AddTransient<ICategoryRepository, MockCategoryRepository>();
@@ -76,6 +77,11 @@ namespace JuiceBar
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+               
+                endpoints.MapControllerRoute(
+                    name:"CategoryFilter",
+                    pattern: "{controller=Drink}/{action=List}/{category?}"
+                    );
             });
 
             DbInitializer.Seed(serviceProvider);
