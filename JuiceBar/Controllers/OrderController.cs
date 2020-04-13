@@ -21,5 +21,32 @@ namespace JuiceBar.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult CheckOut(Order order)
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppigCartItems = items;
+
+            if(_shoppingCart.ShoppigCartItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Your cart is empty, add some drinks first");
+            }
+            if (ModelState.IsValid)
+            {
+                _orderRepository.CreateOrder(order);
+                _shoppingCart.ClearCart();
+                return RedirectToAction("CheckOutComplete");
+            }
+
+            return View(order);
+        }
+
+        public IActionResult CheckOutComplete()
+        {
+            ViewBag.checkOutCompleteMessage = "Thank you for your order";
+            return View();
+        }
+
     }
 }

@@ -21,6 +21,7 @@ namespace JuiceBar.Data.Repositories
         {
             order.OrderPlaced = DateTime.Now;
             _context.Orders.Add(order);
+            _context.SaveChanges();
 
             var shoppingCartItems = _shoppingCart.ShoppigCartItems;
             foreach (var item in shoppingCartItems)

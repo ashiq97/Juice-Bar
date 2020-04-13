@@ -91,7 +91,7 @@ namespace JuiceBar.Data.Models
             var cartItems = _context.ShoppigCartItems
                                 .Where(cart => cart.ShoppingCartId == ShoppingCartId);
 
-            _context.Remove(cartItems);
+            _context.ShoppigCartItems.RemoveRange(cartItems);
             _context.SaveChanges();
         }
 
