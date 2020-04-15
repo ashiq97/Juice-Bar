@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using JuiceBar.Data.Interfaces;
 using JuiceBar.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JuiceBar.Controllers
@@ -17,12 +18,16 @@ namespace JuiceBar.Controllers
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
         }
+
+        [Authorize]
         public IActionResult CheckOut()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
+
         public IActionResult CheckOut(Order order)
         {
             var items = _shoppingCart.GetShoppingCartItems();
